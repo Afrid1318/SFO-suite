@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Track Booking — SFO Meeting Suite</title>
+  
+  <link rel="icon" href="/assets/favicon.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+
+  <script defer src="js/data.js"></script>
+  <script defer src="js/app.js"></script>
+</head>
+
+<body class="app">
+  <div id="toastContainer"></div>
+
+  <!-- ================= SIDEBAR ================= -->
+  <aside class="sidebar">
+    <div class="sidebar-header">
+      <img src="assets/logo.png" alt="SFO Logo">
+      <h3>SFO Suite</h3>
+      <p class="sub-text">Enterprise Portal</p>
+    </div>
+
+    <nav>
+      <button onclick="location.href='home.html'">
+        <i class="fa-solid fa-house"></i>
+        <span>Dashboard</span>
+      </button>
+      <button onclick="location.href='booking.html'">
+        <i class="fa-solid fa-calendar-plus"></i>
+        <span>Book Slot</span>
+      </button>
+      <button onclick="location.href='dashboard.html'">
+        <i class="fa-solid fa-chart-line"></i>
+        <span>Live Status</span>
+      </button>
+      <button class="active" onclick="location.href='track.html'">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <span>Track Booking</span>
+      </button>
+      <button class="admin-only" onclick="location.href='admin.html'">
+        <i class="fa-solid fa-check-to-slot"></i>
+        <span>Approvals</span>
+      </button>
+      <button class="admin-only" onclick="location.href='admin-users.html'">
+        <i class="fa-solid fa-users-gear"></i>
+        <span>Manage Users</span>
+      </button>
+      <button class="danger" onclick="logout()">
+        <i class="fa-solid fa-right-from-bracket"></i>
+        <span>Logout</span>
+      </button>
+    </nav>
+  </aside>
+
+  <!-- ================= MAIN CONTENT ================= -->
+  <main class="main-layout">
+    
+    <div class="hero-card">
+      <div class="hero-left">
+        <h2 class="hero-title">Track Status</h2>
+        <p class="hero-desc">Retrieve real-time updates and approval documentation for your reservations.</p>
+      </div>
+      <div class="hero-glow"></div>
+    </div>
+
+    <div class="card max-w-600 mx-auto">
+      <h3 class="justify-center"><i class="fa-solid fa-search"></i> Retrieval System</h3>
+      <p class="sub-text text-center mb-md">Enter your unique tracking reference to view details</p>
+      
+      <div class="d-flex gap-md mb-md">
+        <input type="text" id="trackId" placeholder="e.g. SFO1700000000" class="flex-1">
+        <button class="primary px-lg" onclick="trackBooking()">
+          Search
+        </button>
+      </div>
+
+      <div id="trackResult">
+        <!-- Results injected here -->
+      </div>
+    </div>
+
+  </main>
+
+</body>
+</html>

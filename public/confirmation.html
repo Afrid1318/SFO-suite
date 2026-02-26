@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Booking Confirmed — SFO Meeting Suite</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="icon" href="assets/favicon.ico" />
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <!-- jsPDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+  <!-- Logic -->
+  <script defer src="js/confirmation.js"></script>
+</head>
+
+<body class="center-wrapper">
+
+  <div class="login-card confirm-card">
+
+    <i class="fa-solid fa-circle-check confirm-icon"></i>
+
+    <h2 class="login-title">Booking Submitted</h2>
+    <p class="subtitle">
+      Your booking request has been submitted and is pending admin approval
+    </p>
+
+    <div id="confirmDetails" class="confirm-details">
+      <!-- injected by JS -->
+    </div>
+
+    <div class="confirm-actions">
+      <button class="primary" onclick="downloadPDF()">
+        <i class="fa-solid fa-file-pdf"></i> Download PDF
+      </button>
+
+      <button class="secondary" onclick="emailBooking()">
+        <i class="fa-solid fa-envelope"></i> Email Details
+      </button>
+    </div>
+
+    <button class="ghost-btn" onclick="location.href='dashboard.html'">
+      ← Go to Dashboard
+    </button>
+
+  </div>
+
+</body>
+</html>

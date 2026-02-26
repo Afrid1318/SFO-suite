@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="SFO Meeting Suite – User Management">
+
+  <link rel="icon" href="assets/favicon.ico?v=1" />
+  <title>SFO — User Management</title>
+
+  <!-- Global Styles -->
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- Core Scripts -->
+  <script defer src="js/app.js"></script>
+  <script defer src="js/admin.js"></script>
+</head>
+
+<body class="app">
+
+<div id="toastContainer"></div>
+
+<!-- ===============================
+     TOP BAR
+================================ -->
+<header class="topbar">
+  <div class="top-left">
+    <button class="icon-btn" onclick="toggleSidebar()" aria-label="Toggle sidebar">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </div>
+
+  <div class="top-right">
+    <button class="icon-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+  </div>
+</header>
+
+<!-- ===============================
+     SIDEBAR
+================================ -->
+<aside class="sidebar" aria-label="Admin Navigation">
+
+  <div class="sidebar-header">
+    <img src="assets/logo.png" alt="SFO Technologies Logo" />
+    <h3>Admin Control</h3>
+    <span class="role-badge admin">ADMIN</span>
+    <p class="sub-text">User Management Console</p>
+  </div>
+
+  <nav class="sidebar-nav">
+
+    <button onclick="location.href='home.html'">
+      <i class="fa-solid fa-house"></i>
+      <span>Home</span>
+    </button>
+
+    <button onclick="location.href='dashboard.html'">
+      <i class="fa-solid fa-chart-line"></i>
+      <span>Room Dashboard</span>
+    </button>
+
+    <button onclick="location.href='booking.html'">
+      <i class="fa-solid fa-calendar-plus"></i>
+      <span>New Booking</span>
+    </button>
+
+    <button onclick="location.href='track.html'">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <span>Track Status</span>
+    </button>
+
+    <button onclick="location.href='admin.html'">
+      <i class="fa-solid fa-check-to-slot"></i>
+      <span>Approvals</span>
+    </button>
+
+    <button class="active" onclick="location.href='admin-users.html'">
+      <i class="fa-solid fa-users-gear"></i>
+      <span>Manage Users</span>
+    </button>
+
+    <button onclick="location.href='admin-history.html'">
+      <i class="fa-solid fa-folder-open"></i>
+      <span>Booking History</span>
+    </button>
+
+    <button onclick="location.href='admin-analytics.html'">
+      <i class="fa-solid fa-chart-pie"></i>
+      <span>Analytics</span>
+    </button>
+
+    <hr class="sidebar-divider" />
+
+    <button class="danger" onclick="logout()">
+      <i class="fa-solid fa-right-from-bracket"></i>
+      <span>Logout</span>
+    </button>
+
+  </nav>
+</aside>
+
+<!-- ===============================
+     MAIN CONTENT
+================================ -->
+<main class="main-layout">
+
+  <!-- HERO -->
+  <section class="hero-card" aria-labelledby="admin-title">
+
+    <div class="hero-left">
+      <h2 id="admin-title" class="hero-title">User Management</h2>
+      <p class="hero-desc">
+        Provision new user accounts and manage access roles for the SFO Meeting Suite
+      </p>
+    </div>
+
+    <div class="hero-glow"></div>
+
+  </section>
+
+  <!-- USER MANAGEMENT PANEL -->
+  <section class="card action-panel" aria-labelledby="user-panel-title">
+
+    <header class="panel-header">
+      <h3 id="user-panel-title">Create New User</h3>
+      <p class="sub-text">Add authorized personnel to the system</p>
+    </header>
+
+    <div class="user-form">
+      <form id="createUserForm">
+        <div class="form-group">
+          <label for="newUsername">Username:</label>
+          <input type="text" id="newUsername" required>
+        </div>
+        <div class="form-group">
+          <label for="newEmail">Email (@nestgroup.net):</label>
+          <input type="email" id="newEmail" required pattern=".*@nestgroup\.net$">
+        </div>
+        <div class="form-group">
+          <label for="newPassword">Password:</label>
+          <input type="password" id="newPassword" required>
+        </div>
+        <div class="form-group">
+          <label for="newRole">Role:</label>
+          <select id="newRole" required>
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+          </select>
+        </div>
+        <button type="submit" class="primary">Create User Account</button>
+      </form>
+    </div>
+
+  </section>
+
+  <!-- USER LIST PANEL -->
+  <section class="card action-panel" aria-labelledby="user-list-title">
+    <header class="panel-header">
+      <h3 id="user-list-title">Registered Users</h3>
+      <p class="sub-text">Overview of all system accounts</p>
+    </header>
+
+    <div id="userList" class="admin-list">
+      <div class="loading">Fetching user data...</div>
+    </div>
+  </section>
+
+</main>
+
+</body>
+</html>
